@@ -35,10 +35,10 @@ const Navbar = () => {
                 <div className="nav-icons desktop-only">
                     <button><Search size={22} /></button>
                     <button><User size={22} /></button>
-                    <button className="cart-btn">
+                    <Link to="/cart" className="cart-btn">
                         <ShoppingBag size={22} />
                         <span className="cart-badge">2</span>
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
