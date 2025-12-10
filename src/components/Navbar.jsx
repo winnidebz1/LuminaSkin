@@ -25,10 +25,10 @@ const Navbar = () => {
 
                 {/* Desktop Links */}
                 <div className="nav-links desktop-only">
+                    <Link to="/">Home</Link>
+                    <Link to="/about">About</Link>
                     <Link to="/shop">Shop</Link>
-                    <Link to="/about">Philosophy</Link>
-                    <Link to="/quiz">Skin Quiz</Link>
-                    <Link to="/blog">Journal</Link>
+                    <Link to="/contact">Contact us</Link>
                 </div>
 
                 {/* Icons */}
@@ -49,10 +49,10 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-                <Link to="/shop" onClick={() => setMobileMenuOpen(false)}>Shop Collection</Link>
-                <Link to="/about" onClick={() => setMobileMenuOpen(false)}>Our Philosophy</Link>
-                <Link to="/quiz" onClick={() => setMobileMenuOpen(false)}>Skin Analysis</Link>
-                <Link to="/blog" onClick={() => setMobileMenuOpen(false)}>The Journal</Link>
+                <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+                <Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link>
+                <Link to="/shop" onClick={() => setMobileMenuOpen(false)}>Shop</Link>
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact us</Link>
             </div>
         </nav>
     );

@@ -41,7 +41,7 @@ const Home = () => {
                     <h1 className="animate-fade-in">Glow Starts With <br /><span className="text-gold">Healthy Skin.</span></h1>
                     <p className="animate-fade-in delay-1">Minimal ingredients. Maximum results. Clinically proven for melanin-rich skin.</p>
                     <div className="hero-buttons animate-fade-in delay-2">
-                        <Link to="/shop" className="btn btn-primary">Shop Bestsellers</Link>
+                        <Link to="/bestsellers" className="btn btn-primary">Shop Bestsellers</Link>
                         <Link to="/quiz" className="btn btn-outline">Take Skin Quiz</Link>
                     </div>
                 </div>
@@ -65,72 +65,6 @@ const Home = () => {
                     <div className="guarantee-item">
                         <CheckCircle size={24} className="text-gold" />
                         <span>Results Driven</span>
-                    </div>
-                </div>
-            </section>
-
-            {/* Bestsellers */}
-            <section className="section bestsellers">
-                <div className="container">
-                    <div className="section-header">
-                        <h2>Our Bestsellers</h2>
-                        <Link to="/shop" className="view-all">View All <ArrowRight size={16} /></Link>
-                    </div>
-
-                    <div className="product-grid">
-                        {products.map((product) => (
-                            <div key={product.id} className="product-card">
-                                <div className="product-image">
-                                    <img src={product.image} alt={product.name} />
-                                    <span className="badge">Best Seller</span>
-                                    <button className="quick-add">Quick Add</button>
-                                </div>
-                                <div className="product-info">
-                                    <div className="rating">
-                                        <Star size={14} fill="#C6A87C" className="text-gold" />
-                                        <span>{product.rating} ({product.reviews})</span>
-                                    </div>
-                                    < Link to={`/product/${product.id}`}>
-                                        <h3>{product.name}</h3>
-                                    </Link>
-                                    <p className="price">{product.price}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Skin Quiz Banner */}
-            <section className="section quiz-banner">
-                <div className="container split-layout">
-                    <div className="text-block">
-                        <h2>Not sure what your skin needs?</h2>
-                        <p>Take our 2-minute expert analysis quiz to find your perfect routine.</p>
-                        <Link to="/quiz" className="btn btn-primary">Start Analysis</Link>
-                    </div>
-                    <div className="image-block glass-effect">
-                        <div className="quiz-preview">
-                            <span>Your Skin Type: <strong>Combination</strong></span>
-                            <span>Recommended: <strong>The Glow Kit</strong></span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Testimonial / Before After (Mock) */}
-            <section className="section testimonials bg-blush">
-                <div className="container">
-                    <h2>Real Results</h2>
-                    <div className="testimonial-slider">
-                        <div className="testimonial-card">
-                            <p>"The best investment I've made for my skin. My hyperpigmentation faded in 3 weeks."</p>
-                            <div className="author">- Amara K.</div>
-                        </div>
-                        <div className="testimonial-card">
-                            <p>"I love that it's clean and actually works. The serum is liquid gold."</p>
-                            <div className="author">- Sarah J.</div>
-                        </div>
                     </div>
                 </div>
             </section>

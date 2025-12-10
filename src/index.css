@@ -280,7 +280,8 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  /* Adjust focus on face */
+  opacity: 0.75;
+  /* 75% opacity for better text readability */
 }
 
 /* Dark overlay gradient */
@@ -1590,4 +1591,401 @@ button {
 .loyalty-banner .btn-outline:hover {
   background: white;
   color: var(--color-cocoa);
+}
+
+/* Page Hero Styles */
+.page-hero {
+  background: var(--color-nude);
+  padding: 120px 0 60px;
+  text-align: center;
+  margin-top: var(--header-height);
+}
+
+.page-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  color: var(--color-cocoa);
+}
+
+.page-hero p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Contact Page Styles */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+.contact-form-wrapper h2 {
+  font-size: 2rem;
+  margin-bottom: 32px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--color-cocoa);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.contact-form .btn {
+  margin-top: 16px;
+  gap: 8px;
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 16px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.contact-info h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.contact-info>p {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.info-item {
+  display: flex;
+  gap: 20px;
+  align-items: start;
+}
+
+.icon-wrapper {
+  background: var(--color-nude);
+  padding: 16px;
+  border-radius: 50%;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.info-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  color: var(--color-cocoa);
+  font-family: var(--font-sans);
+}
+
+.info-item p {
+  color: #666;
+  margin: 0;
+}
+
+.business-hours {
+  background: var(--color-blush);
+  padding: 24px;
+  border-radius: 4px;
+}
+
+.business-hours h4 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: var(--color-cocoa);
+  font-family: var(--font-sans);
+}
+
+.business-hours p {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Skin Quiz Styles */
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-progress {
+  margin-bottom: 48px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-beige);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-gold);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.quiz-question h2 {
+  font-size: 2rem;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  text-align: left;
+  transition: all 0.3s;
+  cursor: pointer;
+  width: 100%;
+}
+
+.quiz-option:hover {
+  border-color: var(--color-gold);
+  background: var(--color-blush);
+}
+
+.quiz-option.selected {
+  border-color: var(--color-gold);
+  background: var(--color-blush);
+}
+
+.option-radio {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-gold);
+}
+
+.quiz-option.selected .option-radio {
+  border-color: var(--color-gold);
+}
+
+.quiz-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.quiz-navigation .btn {
+  gap: 8px;
+}
+
+/* Quiz Results Styles */
+.results-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.diagnosis-card {
+  background: white;
+  border: 1px solid var(--color-beige);
+  padding: 48px;
+  border-radius: 4px;
+}
+
+.diagnosis-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.diagnosis-header h2 {
+  font-size: 2.5rem;
+  margin-top: 16px;
+}
+
+.diagnosis-description {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 48px;
+  line-height: 1.8;
+}
+
+.recommendations {
+  margin-bottom: 48px;
+}
+
+.recommendations h3 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: var(--color-cocoa);
+}
+
+.recommendations ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recommendations li {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.recommendations li svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.product-recommendations {
+  margin-bottom: 48px;
+}
+
+.product-recommendations h3 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: var(--color-cocoa);
+}
+
+.recommended-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.recommended-product {
+  background: var(--color-blush);
+  padding: 32px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.recommended-product h4 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: var(--color-cocoa);
+  font-family: var(--font-sans);
+}
+
+.recommended-product .price {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Bestsellers Page */
+.bestsellers-page .product-grid {
+  margin-bottom: 60px;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Responsive adjustments for new pages */
+@media (max-width: 600px) {
+  .page-hero {
+    padding: 100px 0 40px;
+  }
+
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+
+  .page-hero p {
+    font-size: 1rem;
+  }
+
+  .diagnosis-card {
+    padding: 32px 24px;
+  }
+
+  .diagnosis-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .quiz-question h2 {
+    font-size: 1.5rem;
+  }
+
+  .quiz-navigation {
+    flex-direction: column;
+  }
+
+  .quiz-navigation .btn {
+    width: 100%;
+  }
 }
