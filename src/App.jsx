@@ -13,9 +13,9 @@ import AllProducts from './pages/AllProducts';
 import FAQs from './pages/FAQs';
 import TrackOrder from './pages/TrackOrder';
 import ShippingReturns from './pages/ShippingReturns';
+import About from './pages/About';
 
 // Placeholder pages for navigation
-const About = () => <div className="section container text-center"><h1>About Lumina</h1><p>Coming Soon...</p></div>;
 const Blog = () => <div className="section container text-center"><h1>The Journal</h1><p>Coming Soon...</p></div>;
 const Product = () => <div className="section container text-center"><h1>Product Details</h1><p>Coming Soon...</p></div>;
 
