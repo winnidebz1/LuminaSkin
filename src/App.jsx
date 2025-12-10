@@ -9,9 +9,12 @@ import OrderConfirmation from './pages/OrderConfirmation';
 import Bestsellers from './pages/Bestsellers';
 import Contact from './pages/Contact';
 import SkinQuiz from './pages/SkinQuiz';
+import AllProducts from './pages/AllProducts';
+import FAQs from './pages/FAQs';
+import TrackOrder from './pages/TrackOrder';
+import ShippingReturns from './pages/ShippingReturns';
 
 // Placeholder pages for navigation
-const Shop = () => <div className="section container text-center"><h1>Shop All Products</h1><p>Coming Soon...</p></div>;
 const About = () => <div className="section container text-center"><h1>About Lumina</h1><p>Coming Soon...</p></div>;
 const Blog = () => <div className="section container text-center"><h1>The Journal</h1><p>Coming Soon...</p></div>;
 const Product = () => <div className="section container text-center"><h1>Product Details</h1><p>Coming Soon...</p></div>;
@@ -29,13 +32,16 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop" element={<AllProducts />} />
           <Route path="/bestsellers" element={<Bestsellers />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/about" element={<About />} />
           <Route path="/quiz" element={<SkinQuiz />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="/shipping-returns" element={<ShippingReturns />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />

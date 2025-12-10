@@ -32,9 +32,9 @@ const Footer = () => {
                     <div className="footer-col">
                         <h4>Support</h4>
                         <ul>
-                            <li><Link to="/track">Track Order</Link></li>
-                            <li><Link to="/shipping">Shipping & Returns</Link></li>
-                            <li><Link to="/faq">FAQs</Link></li>
+                            <li><Link to="/track-order">Track Order</Link></li>
+                            <li><Link to="/shipping-returns">Shipping & Returns</Link></li>
+                            <li><Link to="/faqs">FAQs</Link></li>
                             <li><Link to="/contact">Contact Us</Link></li>
                         </ul>
                     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, User, Search, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -29,16 +29,6 @@ const Navbar = () => {
                     <Link to="/about">About</Link>
                     <Link to="/shop">Shop</Link>
                     <Link to="/contact">Contact us</Link>
-                </div>
-
-                {/* Icons */}
-                <div className="nav-icons desktop-only">
-                    <button><Search size={22} /></button>
-                    <button><User size={22} /></button>
-                    <Link to="/cart" className="cart-btn">
-                        <ShoppingBag size={22} />
-                        <span className="cart-badge">2</span>
-                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
