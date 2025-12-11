@@ -21,7 +21,10 @@ const Navbar = () => {
     return (
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container nav-container">
-                <Link to="/" className="nav-logo">LUMINA</Link>
+                <Link to="/" className="nav-logo">
+                    <img src="/assets/logo.png" alt="Lumina Skin" />
+                    <span className="brand-name">LUMINA</span>
+                </Link>
 
                 <div className="nav-links desktop-only">
                     <Link to="/">Home</Link>

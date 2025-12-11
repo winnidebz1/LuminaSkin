@@ -169,10 +169,25 @@ button {
   }
 }
 
-.navbar-logo {
+.navbar-logo,
+.nav-logo {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-cocoa);
 }
 
 .navbar-logo img {
