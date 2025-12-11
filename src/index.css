@@ -269,6 +269,16 @@ button {
   justify-content: center;
 }
 
+.cart-icon-btn {
+  position: relative;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .mobile-toggle {
   background: none;
   border: none;
