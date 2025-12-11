@@ -34,15 +34,15 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-actions">
-                    <Link to="/cart" className="cart-icon-btn">
-                        <ShoppingBag size={24} />
-                        {cartItemCount > 0 && <span className="cart-badge">{cartItemCount}</span>}
-                    </Link>
-
                     {/* Mobile Toggle */}
                     <button className="mobile-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                         {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
+
+                    <Link to="/cart" className="cart-icon-btn">
+                        <ShoppingBag size={24} />
+                        {cartItemCount > 0 && <span className="cart-badge">{cartItemCount}</span>}
+                    </Link>
                 </div>
 
             </div>
