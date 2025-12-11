@@ -14,17 +14,26 @@ import FAQs from './pages/FAQs';
 import TrackOrder from './pages/TrackOrder';
 import ShippingReturns from './pages/ShippingReturns';
 import About from './pages/About';
+import ProductDetails from './pages/ProductDetails';
 
 // Placeholder pages for navigation
 const Blog = () => <div className="section container text-center"><h1>The Journal</h1><p>Coming Soon...</p></div>;
-const Product = () => <div className="section container text-center"><h1>Product Details</h1><p>Coming Soon...</p></div>;
 
 function App() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
 
   return (
     <div className="app-wrapper">
@@ -34,7 +43,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<AllProducts />} />
           <Route path="/bestsellers" element={<Bestsellers />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/quiz" element={<SkinQuiz />} />
           <Route path="/blog" element={<Blog />} />

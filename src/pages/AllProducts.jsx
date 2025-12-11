@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Star, Filter } from 'lucide-react';
 import { products, productsByCategory } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -72,6 +72,12 @@ const AllProducts = () => {
 // Product Card Component with Add to Cart
 const ProductCard = ({ product }) => {
     const { addToCart } = useCart();
+    const navigate = useNavigate();
+
+    const handleQuickAdd = () => {
+        addToCart(product);
+        navigate('/cart');
+    };
 
     return (
         <div className="product-card">
@@ -80,16 +86,18 @@ const ProductCard = ({ product }) => {
                 {product.bestseller && <span className="badge">Best Seller</span>}
                 <button
                     className="quick-add"
-                    onClick={() => addToCart(product)}
+                    onClick={handleQuickAdd}
                 >
                     Quick Add
                 </button>
             </div>
             <div className="product-info">
-                <div className="rating">
-                    <Star size={14} fill="#C6A87C" className="text-gold" />
-                    <span>{product.rating} ({product.reviews})</span>
-                </div>
+                <Link to={`/product/${product.id}#reviews`} className="rating-link">
+                    <div className="rating">
+                        <Star size={14} fill="#C6A87C" className="text-gold" />
+                        <span>{product.rating} ({product.reviews})</span>
+                    </div>
+                </Link>
                 <Link to={`/product/${product.id}`}>
                     <h3>{product.name}</h3>
                 </Link>

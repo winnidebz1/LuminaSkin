@@ -280,8 +280,8 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  opacity: 0.95;
-  /* 95% opacity for better text readability */
+  opacity: 0.98;
+  /* 98% opacity for better text readability */
 }
 
 /* Dark overlay gradient for better text contrast */
@@ -2615,4 +2615,260 @@ button {
     height: 400px;
     order: -1;
   }
+}
+
+/* Product Details Page */
+.product-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .product-details-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.product-gallery {
+  background: var(--color-blush);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.product-info-col h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.product-meta .rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.product-meta .price {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-cocoa-light);
+}
+
+.review-count {
+  font-size: 0.9rem;
+  color: #888;
+  margin-left: 4px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.product-short-desc {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+}
+
+.pain-point-box {
+  background: var(--color-nude);
+  padding: 16px;
+  border-left: 3px solid var(--color-gold);
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+}
+
+.actions-wrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-beige);
+  border-radius: 2px;
+  height: 48px;
+}
+
+.quantity-selector button {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cocoa);
+}
+
+.quantity-selector span {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.add-to-cart-btn {
+  flex: 1;
+  background: var(--color-cocoa);
+  color: white;
+  height: 48px;
+}
+
+.add-to-cart-btn:hover {
+  background: var(--color-cocoa-dark);
+}
+
+.wishlist-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cocoa);
+}
+
+.trust-badges {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-beige);
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-cocoa-light);
+  font-size: 0.9rem;
+}
+
+/* Tabs */
+.product-tabs {
+  margin-top: 24px;
+}
+
+.tab-headers {
+  display: flex;
+  gap: 32px;
+  border-bottom: 1px solid var(--color-beige);
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  padding: 0 0 12px 0;
+  font-size: 1rem;
+  color: #888;
+  position: relative;
+}
+
+.tab-btn.active {
+  color: var(--color-cocoa);
+  font-weight: 600;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+.benefits-list {
+  list-style: none;
+}
+
+.benefits-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+
+.benefits-list li::before {
+  content: '•';
+  color: var(--color-gold);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Reviews */
+.reviews-section {
+  padding-top: 80px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 48px;
+}
+
+.review-card {
+  background: white;
+  padding: 32px;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.review-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.review-content {
+  color: #666;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--color-gold);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.verified-badge {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  margin-left: auto;
 }

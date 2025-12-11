@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Star } from 'lucide-react';
 import { bestsellers } from '../data/products';
 
@@ -7,6 +7,12 @@ import { useCart } from '../context/CartContext';
 
 const Bestsellers = () => {
     const { addToCart } = useCart();
+    const navigate = useNavigate();
+
+    const handleQuickAdd = (product) => {
+        addToCart(product);
+        navigate('/cart');
+    };
 
     return (
         <div className="bestsellers-page">
@@ -27,16 +33,18 @@ const Bestsellers = () => {
                                     <span className="badge">Best Seller</span>
                                     <button
                                         className="quick-add"
-                                        onClick={() => addToCart(product)}
+                                        onClick={() => handleQuickAdd(product)}
                                     >
                                         Quick Add
                                     </button>
                                 </div>
                                 <div className="product-info">
-                                    <div className="rating">
-                                        <Star size={14} fill="#C6A87C" className="text-gold" />
-                                        <span>{product.rating} ({product.reviews})</span>
-                                    </div>
+                                    <Link to={`/product/${product.id}#reviews`} className="rating-link">
+                                        <div className="rating">
+                                            <Star size={14} fill="#C6A87C" className="text-gold" />
+                                            <span>{product.rating} ({product.reviews})</span>
+                                        </div>
+                                    </Link>
                                     <Link to={`/product/${product.id}`}>
                                         <h3>{product.name}</h3>
                                     </Link>
