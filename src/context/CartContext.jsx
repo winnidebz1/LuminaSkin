@@ -51,21 +51,23 @@ export const CartProvider = ({ children }) => {
     const getCartTotal = () => {
         return cart.reduce((total, item) => {
             const price = parseFloat(item.price.replace('$', ''));
-            return total + price * item.quantity;
+            return total + (price * item.quantity);
         }, 0);
     };
 
     return (
-        <CartContext.Provider value={{
-            cart,
-            addToCart,
-            removeFromCart,
-            updateQuantity,
-            clearCart,
-            getCartTotal,
-            isCartOpen,
-            setIsCartOpen
-        }}>
+        <CartContext.Provider
+            value={{
+                cart,
+                addToCart,
+                removeFromCart,
+                updateQuantity,
+                clearCart,
+                getCartTotal,
+                isCartOpen,
+                setIsCartOpen
+            }}
+        >
             {children}
         </CartContext.Provider>
     );
