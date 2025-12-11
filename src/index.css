@@ -280,8 +280,8 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  opacity: 0.75;
-  /* 75% opacity for better text readability */
+  opacity: 0.95;
+  /* 95% opacity for better text readability */
 }
 
 /* Dark overlay gradient for better text contrast */

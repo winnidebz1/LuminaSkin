@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { useCart } from '../context/CartContext';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { cart } = useCart();
+
+    const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -16,14 +20,9 @@ const Navbar = () => {
 
     return (
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-            <div className="container navbar-content">
-                {/* Logo */}
-                <Link to="/" className="navbar-logo">
-                    <img src="/assets/logo.png" alt="Lumina Skin" />
-                    <span className="brand-name">LUMINA</span>
-                </Link>
+            <div className="container nav-container">
+                <Link to="/" className="nav-logo">LUMINA</Link>
 
-                {/* Desktop Links */}
                 <div className="nav-links desktop-only">
                     <Link to="/">Home</Link>
                     <Link to="/about">About</Link>
@@ -31,10 +30,18 @@ const Navbar = () => {
                     <Link to="/contact">Contact us</Link>
                 </div>
 
-                {/* Mobile Toggle */}
-                <button className="mobile-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="nav-actions">
+                    <Link to="/cart" className="cart-icon-btn">
+                        <ShoppingBag size={24} />
+                        {cartItemCount > 0 && <span className="cart-badge">{cartItemCount}</span>}
+                    </Link>
+
+                    {/* Mobile Toggle */}
+                    <button className="mobile-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
+
             </div>
 
             {/* Mobile Menu */}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Filter } from 'lucide-react';
 import { products, productsByCategory } from '../data/products';
+import { useCart } from '../context/CartContext';
 
 const AllProducts = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
@@ -68,14 +69,21 @@ const AllProducts = () => {
     );
 };
 
-// Product Card Component
+// Product Card Component with Add to Cart
 const ProductCard = ({ product }) => {
+    const { addToCart } = useCart();
+
     return (
         <div className="product-card">
             <div className="product-image">
                 <img src={product.image} alt={product.name} />
                 {product.bestseller && <span className="badge">Best Seller</span>}
-                <button className="quick-add">Quick Add</button>
+                <button
+                    className="quick-add"
+                    onClick={() => addToCart(product)}
+                >
+                    Quick Add
+                </button>
             </div>
             <div className="product-info">
                 <div className="rating">

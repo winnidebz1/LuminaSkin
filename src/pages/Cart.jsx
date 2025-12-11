@@ -1,154 +1,115 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Minus, Plus, X, ArrowRight, ShoppingBag } from 'lucide-react';
+import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 const Cart = () => {
+    const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
     const navigate = useNavigate();
-    const [cartItems, setCartItems] = useState([
-        {
-            id: 1,
-            name: 'Lumina Glow Serum',
-            price: 85.00,
-            quantity: 1,
-            image: '/assets/serum.png',
-            subscription: 'onetime'
-        },
-        {
-            id: 2,
-            name: 'Velvet Moisture Cream',
-            price: 65.00,
-            quantity: 1,
-            image: '/assets/cream.png',
-            subscription: 'onetime'
-        }
-    ]);
 
-    const updateQuantity = (id, newQuantity) => {
-        if (newQuantity < 1) return;
-        setCartItems(items =>
-            items.map(item =>
-                item.id === id ? { ...item, quantity: newQuantity } : item
-            )
-        );
-    };
+    const total = getCartTotal();
 
-    const removeItem = (id) => {
-        setCartItems(items => items.filter(item => item.id !== id));
-    };
-
-    const subtotal = cartItems.reduce((sum, item) => {
-        const itemPrice = item.subscription === 'sub' ? item.price * 0.9 : item.price;
-        return sum + (itemPrice * item.quantity);
-    }, 0);
-
-    const shipping = subtotal > 100 ? 0 : 8.00;
-    const tax = subtotal * 0.08;
-    const total = subtotal + shipping + tax;
-
-    if (cartItems.length === 0) {
+    if (cart.length === 0) {
         return (
-            <div className="cart-page container section">
-                <div className="empty-cart">
-                    <ShoppingBag size={64} className="text-gold" />
-                    <h2>Your bag is empty</h2>
-                    <p>Discover our bestselling products and start your glow journey.</p>
-                    <Link to="/shop" className="btn btn-primary">Shop Collection</Link>
-                </div>
+            <div className="cart-page">
+                <section className="section text-center">
+                    <div className="container">
+                        <h1>Your Cart is Empty</h1>
+                        <p className="empty-cart-msg">Looks like you haven't added anything to your cart yet.</p>
+                        <Link to="/shop" className="btn btn-primary">Start Shopping</Link>
+                    </div>
+                </section>
             </div>
         );
     }
 
     return (
-        <div className="cart-page container section">
-            <h1 className="page-title">Shopping Bag</h1>
+        <div className="cart-page">
+            <section className="page-hero">
+                <div className="container">
+                    <h1>Your Cart</h1>
+                </div>
+            </section>
 
-            <div className="cart-layout">
-                <div className="cart-items">
-                    {cartItems.map(item => (
-                        <div key={item.id} className="cart-item">
-                            <img src={item.image} alt={item.name} className="cart-item-image" />
-
-                            <div className="cart-item-details">
-                                <h3>{item.name}</h3>
-                                {item.subscription === 'sub' && (
-                                    <span className="subscription-badge">Subscribe & Save 10%</span>
-                                )}
-                                <p className="item-price">${item.subscription === 'sub' ? (item.price * 0.9).toFixed(2) : item.price.toFixed(2)}</p>
+            <section className="section">
+                <div className="container">
+                    <div className="cart-grid">
+                        {/* Cart Items */}
+                        <div className="cart-items">
+                            <div className="cart-header">
+                                <span>Product</span>
+                                <span>Quantity</span>
+                                <span>Total</span>
                             </div>
 
-                            <div className="cart-item-actions">
-                                <div className="quantity-selector">
-                                    <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>
-                                        <Minus size={16} />
-                                    </button>
-                                    <span>{item.quantity}</span>
-                                    <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
-                                        <Plus size={16} />
-                                    </button>
+                            {cart.map(item => (
+                                <div key={item.id} className="cart-item">
+                                    <div className="item-info">
+                                        <div className="item-image">
+                                            <img src={item.image} alt={item.name} />
+                                        </div>
+                                        <div className="item-details">
+                                            <h3>{item.name}</h3>
+                                            <p className="item-price">{item.price}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="item-quantity">
+                                        <div className="quantity-controls">
+                                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>
+                                                <Minus size={16} />
+                                            </button>
+                                            <span>{item.quantity}</span>
+                                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+                                                <Plus size={16} />
+                                            </button>
+                                        </div>
+                                        <button
+                                            className="remove-btn"
+                                            onClick={() => removeFromCart(item.id)}
+                                        >
+                                            <Trash2 size={18} />
+                                        </button>
+                                    </div>
+
+                                    <div className="item-total">
+                                        ${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
+                                    </div>
                                 </div>
+                            ))}
+                        </div>
 
-                                <button
-                                    className="remove-btn"
-                                    onClick={() => removeItem(item.id)}
-                                >
-                                    <X size={20} />
-                                </button>
+                        {/* Order Summary */}
+                        <div className="cart-summary">
+                            <h2>Order Summary</h2>
+                            <div className="summary-row">
+                                <span>Subtotal</span>
+                                <span>${total.toFixed(2)}</span>
+                            </div>
+                            <div className="summary-row">
+                                <span>Shipping</span>
+                                <span>Calculated at checkout</span>
+                            </div>
+                            <div className="summary-total">
+                                <span>Total</span>
+                                <span>${total.toFixed(2)}</span>
                             </div>
 
-                            <div className="cart-item-total">
-                                ${((item.subscription === 'sub' ? item.price * 0.9 : item.price) * item.quantity).toFixed(2)}
-                            </div>
+                            <button
+                                className="btn btn-full"
+                                onClick={() => navigate('/checkout')}
+                            >
+                                Proceed to Checkout
+                            </button>
+
+                            <Link to="/shop" className="continue-shopping">
+                                <ArrowLeft size={16} />
+                                Continue Shopping
+                            </Link>
                         </div>
-                    ))}
-                </div>
-
-                <div className="cart-summary">
-                    <h3>Order Summary</h3>
-
-                    <div className="summary-line">
-                        <span>Subtotal</span>
-                        <span>${subtotal.toFixed(2)}</span>
-                    </div>
-
-                    <div className="summary-line">
-                        <span>Shipping</span>
-                        <span>{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
-                    </div>
-
-                    <div className="summary-line">
-                        <span>Tax</span>
-                        <span>${tax.toFixed(2)}</span>
-                    </div>
-
-                    {subtotal < 100 && (
-                        <div className="free-shipping-notice">
-                            Add ${(100 - subtotal).toFixed(2)} more for free shipping
-                        </div>
-                    )}
-
-                    <div className="summary-total">
-                        <span>Total</span>
-                        <span>${total.toFixed(2)}</span>
-                    </div>
-
-                    <button
-                        className="btn btn-primary checkout-btn"
-                        onClick={() => navigate('/checkout')}
-                    >
-                        Proceed to Checkout <ArrowRight size={18} />
-                    </button>
-
-                    <Link to="/shop" className="continue-shopping">
-                        Continue Shopping
-                    </Link>
-
-                    <div className="trust-badges">
-                        <div className="trust-item">🔒 Secure Checkout</div>
-                        <div className="trust-item">📦 Free Returns</div>
-                        <div className="trust-item">✨ Cruelty-Free</div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 };

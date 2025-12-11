@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { Star } from 'lucide-react';
 import { bestsellers } from '../data/products';
 
+import { useCart } from '../context/CartContext';
+
 const Bestsellers = () => {
+    const { addToCart } = useCart();
+
     return (
         <div className="bestsellers-page">
             <section className="page-hero">
@@ -21,7 +25,12 @@ const Bestsellers = () => {
                                 <div className="product-image">
                                     <img src={product.image} alt={product.name} />
                                     <span className="badge">Best Seller</span>
-                                    <button className="quick-add">Quick Add</button>
+                                    <button
+                                        className="quick-add"
+                                        onClick={() => addToCart(product)}
+                                    >
+                                        Quick Add
+                                    </button>
                                 </div>
                                 <div className="product-info">
                                     <div className="rating">
